@@ -24,6 +24,20 @@ export default function App() {
                 </NavbarBrand>
             </NavbarContent>
 
+            <NavbarContent className="hidden sm:flex gap-4" justify="center">
+                {menuItems.map((item, index) => (
+                    <NavbarMenuItem key={`${item}-${index}`}>
+                        <Link
+                            color="foreground"
+                            href={"/" + item}
+                            className="bold"
+                        >
+                            {item.toUpperCase()}
+                        </Link>
+                    </NavbarMenuItem>
+                ))}
+            </NavbarContent>
+
             <NavbarMenu>
                 {menuItems.map((item, index) => (
                     <NavbarMenuItem key={`${item}-${index}`}>

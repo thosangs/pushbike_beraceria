@@ -2,12 +2,12 @@
 'use client';
 
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@nextui-org/react";
-import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, Divider } from "@nextui-org/react";
 import schedule from '../../lib/schedules';
 
 const Schedule = () => {
     return (
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4 h-screen">
             <h2 className="text-xl font-bold mb-4 mx-auto w-full max-w-3xl">
                 Jadwal Kegiatan
             </h2>

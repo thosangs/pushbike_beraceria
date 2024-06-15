@@ -1,10 +1,5 @@
-// app/api/spreadsheet/route.js
 import { NextResponse } from 'next/server';
-import axios from 'axios';
-import ranges from '../../../lib/ranges'; // Adjust the import path as needed
-
-const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
-const API_KEY = process.env.GOOGLE_API_KEY;
+import { connectToDatabase } from '../../../lib/db';
 
 export async function GET(req) {
     try {
@@ -16,25 +11,19 @@ export async function GET(req) {
             return NextResponse.json({ error: 'Missing year or type parameter' }, { status: 400 });
         }
 
-        const selectedRanges = ranges[year]?.[type];
+        const { db } = await connectToDatabase();
+        const collection = db.collection('livescore');
 
-        if (!selectedRanges) {
-            return NextResponse.json({ error: 'Invalid year or type parameter' }, { status: 400 });
+        // Query the database for the data with the specified year and type
+        const document = await collection.findOne({ year, type });
+
+        if (!document) {
+            return NextResponse.json({ error: 'Data not found for the specified year and type' }, { status: 404 });
         }
 
-        const data = {};
-
-        // Fetch data for all ranges and organize them under their respective keys
-        for (const [batch, range] of Object.entries(selectedRanges)) {
-            const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${range}?key=${API_KEY}`;
-            const response = await axios.get(url);
-            const sheetData = response.data.values || [];
-            data[batch] = sheetData;
-        }
-
-        return NextResponse.json({ data });
+        return NextResponse.json({ data: document.data });
     } catch (error) {
-        console.error('Error accessing spreadsheet:', error);
+        console.error('Error accessing MongoDB:', error);
         return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
 }

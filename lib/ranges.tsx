@@ -1,6 +1,13 @@
 // lib/ranges.js
+type Dictionary = {
+    [year: string]: {
+        [type: string]: {
+            [stage: string]: string;
+        };
+    };
+};
 
-const ranges = {
+const ranges: Dictionary = {
     '2021': {
         'mix': {
             'Batch 1': '2021 (Simulasi)!I3:P9',

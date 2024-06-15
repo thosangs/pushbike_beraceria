@@ -4,10 +4,10 @@
 import { Card, Link, CardHeader, Divider, CardBody, Button } from "@nextui-org/react";
 import ranges from '../../lib/ranges';
 
-export default function Home() {
+export default function Livescore() {
     return (
         <div className="container mx-auto flex justify-center items-center">
-            <div className="overflow-x-auto w-full px-4">
+            <div className="overflow-x-auto w-full px-4 my-4">
                 <div className="flex flex-col gap-8 items-center w-full">
                     {Object.entries(ranges).map(([year, types]) => (
                         <Card key={year} className="w-full max-w-[600px] mx-4">
@@ -15,10 +15,10 @@ export default function Home() {
                                 <div
                                     className="w-16 h-16 rounded-lg bg-blue-500 flex justify-center items-center text-lg text-white"
                                 >
-                                    {year.slice(-2)}
+                                    {year.slice(-2).toUpperCase()}
                                 </div>
                                 <div className="flex flex-col justify-center">
-                                    <p className="text-lg">Tahun {year}</p>
+                                    <p className="text-lg">Kelas {year.toUpperCase()}</p>
                                 </div>
                             </CardHeader>
                             <Divider />

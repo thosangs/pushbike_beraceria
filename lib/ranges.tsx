@@ -27,8 +27,8 @@ const ranges: Dictionary = {
             'Batch 3': '2020 (Simulasi)!I19:P25',
             'Semifinal 1': '2020 (Simulasi)!R3:T9',
             'Semifinal 2': '2020 (Simulasi)!R11:T17',
-            'Final Novice (Sementara)': '2020 (Simulasi)!R19:T25',
-            'Final Utama (Sementara)': '2020 (Simulasi)!R27:T33',
+            'Final Novice': '2020 (Simulasi)!R19:T25',
+            'Final Utama': '2020 (Simulasi)!R27:T33',
         },
         'girl': {
             'Batch 1': '2020 (Simulasi)!I36:P42',

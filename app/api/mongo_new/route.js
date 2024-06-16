@@ -31,17 +31,32 @@ export async function GET(req) {
     try {
         const { searchParams } = new URL(req.url);
         const secret_key = searchParams.get('key');
+        const year = searchParams.get('year');
+        const type = searchParams.get('type');
+
         if (secret_key != PASSKEY) {
             return NextResponse.json({ error: 'Whoops, wrong code' }, { status: 403 });
         }
+
         const { db } = await connectToDatabase();
+        const batchData = ranges[year]?.[type];
+
+        if (!batchData) {
+            return NextResponse.json({ error: 'Data not found' }, { status: 404 });
+        }
+
+        await fetchAndUpsertData(year, type, batchData, db);
+
+
+        // How to loop batchData ?
+
 
         // Loop through all years and types in the ranges dictionary
-        for (const [year, types] of Object.entries(ranges)) {
-            for (const [type, batches] of Object.entries(types)) {
-                await fetchAndUpsertData(year, type, batches, db);
-            }
-        }
+        // for (const [year, types] of Object.entries(ranges)) {
+        //     for (const [type, batches] of Object.entries(types)) {
+        //         await fetchAndUpsertData(year, type, batches, db);
+        //     }
+        // }
 
         return NextResponse.json({ message: 'Data successfully inserted/updated into MongoDB' });
     } catch (error) {

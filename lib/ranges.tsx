@@ -34,10 +34,10 @@ const ranges: Dictionary = {
             'Batch 1': '2020 (Simulasi)!I36:P42',
             'Batch 2': '2020 (Simulasi)!I44:P50',
             'Batch 3': '2020 (Simulasi)!I52:P58',
-            'Semifinal 1 (Sementara)': '2020 (Simulasi)!R36:T42',
-            'Semifinal 2 (Sementara)': '2020 (Simulasi)!R44:T50',
-            'Final Novice (Sementara)': '2020 (Simulasi)!R52:T58',
-            'Final Utama (Sementara)': '2020 (Simulasi)!R60:T66',
+            'Semifinal 1': '2020 (Simulasi)!R36:T42',
+            'Semifinal 2': '2020 (Simulasi)!R44:T50',
+            'Final Novice': '2020 (Simulasi)!R52:T58',
+            'Final Utama': '2020 (Simulasi)!R60:T66',
         }
     },
     '2019': {

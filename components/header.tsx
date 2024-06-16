@@ -9,6 +9,7 @@ export default function App() {
     const menuItems = [
         "regulasi",
         "jadwal",
+        "doorprizes",
         "livescore",
     ];
 

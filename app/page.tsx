@@ -32,6 +32,16 @@ export default function Home() {
           >
             Jadwal
           </Button>
+          <Button href="/doorprizes"
+            as={Link}
+            showAnchorIcon
+            color="warning"
+            variant="bordered"
+            className="text-xl bold"
+            style={{ width: "100%", height: "60px" }}
+          >
+            Doorprize
+          </Button>
           <Button href="/livescore"
             as={Link}
             showAnchorIcon
